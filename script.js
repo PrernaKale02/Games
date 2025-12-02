@@ -1,8 +1,8 @@
 var names = new Array("Car Game", "Number Guessing Game", "Rock Paper Scissors");
 var images = new Array(
-	"/imgs/car.png",
-	"/imgs/number.jpg",
-	"/imgs/rps.jpg"
+	"imgs/car.png",
+	"imgs/number.jpg",
+	"imgs/rps.jpg"
 );
 var games = new Array("car.html", "num-guesser.html", "rps.html");
 var count = 0;
