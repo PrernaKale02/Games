@@ -1,0 +1,14 @@
+#img {
+	width: 450px;
+	transition: transform 0.5s;
+	border:solid black;
+	border-width: 2%;
+}
+a:hover{
+	cursor:pointer;
+}
+
+button:hover{
+	cursor: pointer;
+}
+

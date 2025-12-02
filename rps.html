@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ROCK PAPER SCISSORS</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				text-align: center;
+				/* background-color: #f2f2f2; */
+				margin: 0;
+				padding: 0;
+			}
+
+			h1 {
+				color: #333;
+				padding: 20px;
+			}
+
+			.game-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 20px;
+			}
+
+			.user-choice,
+			.computer-choice,
+			.result {
+				flex: 1;
+				border: 2px solid #333;
+				padding: 10px;
+				background-color: #fff;
+				margin: 10px;
+			}
+
+			button {
+				background-color: #007bff;
+				color: #fff;
+				padding: 10px 20px;
+				border: none;
+				cursor: pointer;
+				margin: 5px;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+
+			.score {
+				margin-top: 20px;
+				background-color: #fff;
+				border: 2px solid #333;
+				padding: 10px;
+			}
+
+			span {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body bgcolor="aqua">
+		<h1>Rock, Paper, Scissors</h1>
+		<div class="game-container">
+			<div class="user-choice">
+				<h2>Your Choice</h2>
+				<button id="rock">Rock</button>
+				<button id="paper">Paper</button>
+				<button id="scissors">Scissors</button>
+			</div>
+			<div class="computer-choice">
+				<h2>Computer's Choice</h2>
+				<p id="computer-pick">-</p>
+			</div>
+			<div class="result">
+				<h2>Result</h2>
+				<p id="result-message">-</p>
+			</div>
+		</div>
+		<div class="score">
+			<h2>Score</h2>
+			<p>Your points: <span id="user-points">0</span></p>
+			<p>Computer's points: <span id="computer-points">0</span></p>
+		</div>
+
+		<script>
+			const choices = ["rock", "paper", "scissors"];
+
+			let computer_points = 0;
+			let user_points = 0;
+
+			const userPointsElement = document.getElementById("user-points");
+			const computerPointsElement = document.getElementById("computer-points");
+			const computerPickElement = document.getElementById("computer-pick");
+			const resultMessageElement = document.getElementById("result-message");
+
+			function computerChoice() {
+				const random_number = Math.floor(Math.random() * 3);
+				return choices[random_number];
+			}
+
+			function play(userChoice) {
+				const computer = computerChoice();
+				computerPickElement.textContent = computer;
+
+				if (userChoice === computer) {
+					resultMessageElement.textContent = "It's a tie.";
+				} else if (
+					(userChoice === "rock" && computer === "scissors") ||
+					(userChoice === "paper" && computer === "rock") ||
+					(userChoice === "scissors" && computer === "paper")
+				) {
+					user_points++;
+					resultMessageElement.textContent = "You won!";
+				} else {
+					computer_points++;
+					resultMessageElement.textContent = "You lost!";
+				}
+
+				userPointsElement.textContent = user_points;
+				computerPointsElement.textContent = computer_points;
+			}
+
+			document
+				.getElementById("rock")
+				.addEventListener("click", () => play("rock"));
+			document
+				.getElementById("paper")
+				.addEventListener("click", () => play("paper"));
+			document
+				.getElementById("scissors")
+				.addEventListener("click", () => play("scissors"));
+		</script>
+	</body>
+</html>

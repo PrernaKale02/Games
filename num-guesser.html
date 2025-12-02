@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NUMBER GUESSER</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				text-align: center;
+			}
+
+			h1 {
+				color: #333;
+			}
+
+			p {
+				color: #777;
+			}
+
+			input {
+				width: 150px;
+				padding: 5px;
+			}
+
+			button {
+				background-color: #007bff;
+				color: #fff;
+				padding: 10px 20px;
+				border: none;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+		</style>
+	</head>
+	<body bgcolor="aqua">
+		<h1>Number Guessing Game</h1>
+		<p>Guess a number between 0 and <span id="topOfRange">0</span></p>
+		<input type="text" id="userGuess" placeholder="Enter your guess" />
+		<button id="guessButton">Guess</button>
+		<p id="message"></p>
+		<p id="guessCount">Guesses: 0</p>
+
+		<script>
+			const topOfRangeElement = document.getElementById("topOfRange");
+			const userGuessElement = document.getElementById("userGuess");
+			const guessButton = document.getElementById("guessButton");
+			const messageElement = document.getElementById("message");
+			const guessCountElement = document.getElementById("guessCount");
+
+			let top_of_range = 10;
+			const random_number = Math.floor(Math.random() * top_of_range);
+			let guesses = 0;
+
+			function updateGuessCount() {
+				guessCountElement.textContent = `Guesses: ${guesses}`;
+			}
+
+			guessButton.addEventListener("click", () => {
+				const userGuess = parseInt(userGuessElement.value);
+
+				if (!isNaN(userGuess)) {
+					if (userGuess === random_number) {
+						messageElement.textContent = "You got it!";
+					} else if (userGuess > random_number) {
+						messageElement.textContent = "You are above the number.";
+					} else {
+						messageElement.textContent = "You are below the number.";
+					}
+
+					guesses++;
+					updateGuessCount();
+				} else {
+					messageElement.textContent = "Enter a number next time.";
+				}
+
+				userGuessElement.value = "";
+			});
+
+			document.addEventListener("DOMContentLoaded", () => {
+				topOfRangeElement.textContent = top_of_range;
+				updateGuessCount();
+			});
+		</script>
+	</body>
+</html>
