@@ -22,14 +22,14 @@ Clicking an image opens the selected game.
 Slideshow transitions + logic are handled in script.js.
 
 📁 Project Structure
-/project
+project/
 │── index.html → Slideshow to navigate between games
 │── car.html → Car animation game
 │── num-guesser.html → Number guessing game
 │── rps.html → Rock-paper-scissors game
 │── script.js → Slideshow script
 │── style.css → Shared styles for slideshow UI
-│── /imgs → Game images (car, numbers, RPS)
+└── imgs/ → Game images (car, numbers, RPS)
 
 🛠️ Tech Stack
 HTML5 – structure
